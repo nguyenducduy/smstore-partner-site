@@ -17,6 +17,9 @@ blocks:
             - kubectl apply -f _deployment.yaml
             - kubectl apply -f k8s/service.yaml
             - kubectl apply -f k8s/ingress.yaml
+      secrets:
+        - name: do-k8s
+        - name: dockerhub
   - name: Tag latest release
     task:
       secrets:
