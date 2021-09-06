@@ -20,7 +20,7 @@ COPY . .
 RUN yarn build
 
 # expose 3000 on container
-EXPOSE 3001
+EXPOSE 3000
 
 # start the app
 CMD ["yarn", "start" ]

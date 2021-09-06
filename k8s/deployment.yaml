@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smstore-partner-site
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: smstore-partner-site
+  template:
+    metadata:
+      labels:
+        app: smstore-partner-site
+    spec:
+      containers:
+        - name: smstore-partner-site
+          image: nguyenducduy/smstore-partner-site:$SEMAPHORE_WORKFLOW_ID
+      imagePullSecrets: # if using a private image
+        - name: dockerhub-user
