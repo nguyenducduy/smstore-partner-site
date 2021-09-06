@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - *.tiemcuatui.com
+    - "*.tiemcuatui.com"
     secretName: wildcard-tiemcuatui-com-tls
   rules:
-  - host: *.tiemcuatui.com
+  - host: "*.tiemcuatui.com"
     http:
       paths:
       - backend:
