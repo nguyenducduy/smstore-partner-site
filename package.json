@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt start"
+    "start": "HOST=0.0.0.0 PORT=3000 nuxt start"
   },
   "dependencies": {
     "@nuxtjs/apollo": "^4.0.1-rc.5",
