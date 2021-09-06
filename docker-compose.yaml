@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  smstore-partner-site:
+    container_name: "smstore-partner-site"
+    image: "smstore-partner-site:latest"
+    env_file:
+      - .env
+    build:
+      context: ./
+      dockerfile: Dockerfile.local
+      labels:
+        - smstore-partner-site
+    volumes:
+      - .:/code
+    ports:
+      - 80:3000
