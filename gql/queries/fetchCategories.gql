@@ -1,0 +1,38 @@
+query fetchCategories {
+  categories(
+    where: {
+      parent_id: {_is_null: true},
+      is_active: {_eq: true}
+    },
+    order_by: { order_no: desc }
+  ) {
+    id
+    parent_id
+    name
+    slug
+    
+    
+    children(
+      where: { is_active: {_eq: true} },
+      order_by: { order_no: desc }
+    ) {
+      id
+      parent_id
+      name
+      slug
+      
+      
+      children(
+        where: { is_active: {_eq: true} },
+        order_by: { order_no: desc }
+      ) {
+        id
+        parent_id
+        name
+        slug
+        
+        
+      }
+    }
+  }
+}
