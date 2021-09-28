@@ -42,14 +42,9 @@ export default function({
     link: ApolloLink.from([errorLink, createHttpLink({
       credentials: 'include',
       uri: NUXT_ENV_GRAPHQL_URI,
-      // fetch: (uri, options) => {
-      //   const user = jwtDecode(token);
-      //   options.headers['X-Hasura-Role'] = user['https://hasura.io/jwt/claims']['x-hasura-role'];
-      //   options.headers['X-Hasura-User-Id'] = user['sub'];
-      //   options.headers['Authorization'] = 'Bearer ' + token;
-
-      //   return fetch(uri, options)
-      // },
+      fetch: (uri, options) => {
+        return fetch(uri, options)
+      },
     })]),
     wsEndpoint: NUXT_ENV_GRAPHQLWS_URI,
     connectToDevTools: true

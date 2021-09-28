@@ -1,6 +1,9 @@
-query fetchCategories {
+query fetchCategories(
+  $store_id: Int
+) {
   categories(
     where: {
+      store_id: { _eq: $store_id }
       parent_id: {_is_null: true},
       is_active: {_eq: true}
     },
@@ -11,7 +14,6 @@ query fetchCategories {
     name
     slug
     
-    
     children(
       where: { is_active: {_eq: true} },
       order_by: { order_no: desc }
@@ -20,7 +22,6 @@ query fetchCategories {
       parent_id
       name
       slug
-      
       
       children(
         where: { is_active: {_eq: true} },

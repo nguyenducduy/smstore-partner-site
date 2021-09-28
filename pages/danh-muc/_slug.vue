@@ -16,7 +16,7 @@ export default class HomePage extends Vue {
   @Getter('currentStoreId') currentStoreId
 
   mounted() {
-
+      
   }
 }
 </script>

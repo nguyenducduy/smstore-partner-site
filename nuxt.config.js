@@ -7,7 +7,7 @@ export default {
     NODE_ENV: process.env.NODE_ENV,
     NUXT_ENV_GRAPHQL_URI: process.env.NUXT_ENV_GRAPHQL_URI,
     NUXT_ENV_GRAPHQLWS_URI: process.env.NUXT_ENV_GRAPHQLWS_URI,
-    NUXT_ENV_GUEST_TOKEN: process.env.NUXT_ENV_GUEST_TOKEN,
+    NUXT_ENV_S3_ENDPOINT: process.env.NUXT_ENV_S3_ENDPOINT,
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -42,6 +42,7 @@ export default {
     { src: '@/plugins/vue-filters.js' },
     { src: '@/plugins/webstorage.js', mode: 'client' },
     { src: '@/plugins/axios.js' },
+    { src: '@/plugins/light-gallery.js', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -82,7 +83,7 @@ export default {
     includeNodeModules: true,
     clientConfigs: {
       default: '~/gql/clientConfig.ts'
-    }
+    },
   },
 
   tailwindcss: {

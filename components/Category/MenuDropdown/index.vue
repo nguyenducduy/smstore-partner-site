@@ -98,6 +98,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
+import { Getter } from 'vuex-class'
 
 import fetchCategories from '@/gql/queries/fetchCategories.gql'
 
@@ -105,11 +106,18 @@ import fetchCategories from '@/gql/queries/fetchCategories.gql'
   apollo: {
     categories: {
       prefetch: true,
-      query: fetchCategories
+      query: fetchCategories,
+      variables() {
+        return {
+          store_id: this.currentStoreId
+        }
+      }
     }
   }
 })
 export default class CategoryMenuDropdown extends Vue {
+  @Getter('currentStoreId') currentStoreId
+
   categories: any = null;
 }
 </script>

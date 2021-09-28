@@ -1,0 +1,30 @@
+query fetchProducts(
+  $where: products_bool_exp
+  $order_by: [products_order_by!]
+) {
+  products(
+    where: $where,
+    order_by: $order_by
+  ) {
+    id
+    name
+    slug
+    is_active
+    in_stock
+    price
+    order_no
+    category {
+      id
+      name
+      slug
+    }
+    images(
+      offset: 0,
+      limit: 1,
+      order_by: { id: asc }
+    ) {
+      id
+      path
+    }
+  }
+}

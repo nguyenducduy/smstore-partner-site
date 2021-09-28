@@ -26,21 +26,11 @@ import TopBar from '@/components/Layout/TopBar/index.vue'
   }
 })
 export default class DefaultLayout extends Vue {
-  @Getter('isDomain') isDomain
-  @Getter('currentDomain') currentDomain
+  @Getter('isStore') isStore
 
   mounted() {
-    if (process.client) {
-      const host = window.location.host;
-      const parts = host.split('.');
-
-      if (
-        !this.isDomain
-        ||
-        (parts.length === 2 && this.currentDomain !== host)
-      ) {
-        this.$router.replace('/waiting')
-      }
+    if (!this.isStore) {
+      this.$router.replace('/waiting')
     }
   }
 }
@@ -68,8 +58,8 @@ export default class DefaultLayout extends Vue {
 
 @media (min-width: 1536px) {
   .w-fixed {
-    flex: 0 1 350px;
-    min-width: 350px;
+    flex: 0 1 300px;
+    min-width: 300px;
   }
 }
 

@@ -1,0 +1,10 @@
+query fetchStore(
+  $where: stores_bool_exp
+) {
+  stores(
+    where: $where
+  ) {
+    id
+    domain
+  }
+}

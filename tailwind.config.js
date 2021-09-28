@@ -16,5 +16,6 @@ module.exports = {
   plugins: [
     require("tailwindcss-debug-screens"),
     require('daisyui'),
+    require('@tailwindcss/line-clamp'),
   ],
 }

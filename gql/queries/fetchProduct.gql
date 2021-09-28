@@ -1,0 +1,38 @@
+query fetchProduct(
+  $where: products_bool_exp
+) {
+  products(
+    where: $where,
+  ) {
+    id
+    name
+    slug
+    description
+    is_active
+    in_stock
+    price
+    order_no
+    options
+    category {
+      id
+      name
+      slug
+    }
+    images(
+      offset: 0,
+      limit: 4,
+      order_by: { id: asc }
+    ) {
+      id
+      path
+    }
+    product_attributes {
+      id
+      value
+      attribute {
+        id
+        name
+      }
+    }
+  }
+}
