@@ -14,10 +14,6 @@
           </div>
         </client-only>
 
-        <!-- <img
-          :alt="product.name"
-          class="object-cover object-center w-full border border-gray-200 rounded lg:w-1/2"
-          data-src="https://www.whitmorerarebooks.com/pictures/medium/2465.jpg"> -->
         <div class="w-full mt-6 lg:w-1/2 lg:pl-10 lg:py-6 lg:mt-0">
           <h2 class="text-sm tracking-widest text-gray-500">
             {{ product.category.name }}
@@ -63,37 +59,45 @@
             </span>
           </div> -->
           <div class="flex flex-col items-center pb-5 mt-6 mb-5 border-b-2 border-gray-200" v-if="product.options.length > 0">
-            <div class="flex items-center w-full my-2" v-for="(option, i) in product.options" :key="i">
+            <div class="flex items-center w-full my-2" v-for="(option, k) in product.options" :key="k">
               <span class="w-1/2 mr-6">{{ option.name }}</span>
               <template v-if="option.values.length > 0">
                 <div class="flex items-start w-full">
                   <div class="mr-4 form-control" v-for="(optValue, i) in option.values" :key="i">
                     <label class="mr-2 cursor-pointer label">
                       <span class="mr-2 label-text">{{ optValue.val }}</span> 
-                      <input type="radio" :name="`opt-${option.name}`" class="radio radio-accent" value="">
+                      <input
+                        type="radio"
+                        :name="`opt-${option.name}`"
+                        class="radio radio-accent"
+                        :value="optValue"
+                        v-model="optionsSelected[k]"
+                        @change="onOptionChange"
+                      >
                     </label>
-                    <small class="text-gray-400">+1,000,000</small>
+                    <small class="text-gray-400">
+                      <span v-if="optValue.mode === 'inc'" class="text-green-600">
+                        +
+                        <span v-if="optValue.price !== ''">{{ +optValue.price | number('0,0') }}</span>
+                      </span>
+                      <span v-if="optValue.mode === 'dec'" class="text-red-600">
+                        -
+                        <span v-if="optValue.price !== ''">{{ +optValue.price | number('0,0') }}</span>
+                      </span>
+                    </small>
                   </div> 
                 </div>
               </template>
             </div>            
           </div>
           <div class="flex items-center">
-            <span class="text-2xl font-medium text-gray-900 title-font">
+            <span :class="`title-font ${optionsSelected.length > 0 ? 'text-xl line-through text-gray-400 font-light' : 'text-2xl text-gray-900 font-medium'}`">
               {{ product.price | number('0,0') }} đ
             </span>
-            <div class="flex py-2 ml-auto tooltip tooltip-left" data-tip="Thêm vào giỏ hàng">
-              <button class="btn btn-square btn-ghost">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                  <circle cx="6" cy="19" r="2" />
-                  <circle cx="17" cy="19" r="2" />
-                  <path d="M17 17h-11v-14h-2" />
-                  <path d="M6 5l6.005 .429m7.138 6.573l-.143 .998h-13" />
-                  <path d="M15 6h6m-3 -3v6" />
-                </svg>
-              </button>
-            </div>
+            <span :class="`ml-4 text-2xl font-medium text-gray-900 title-font`" v-if="optionsSelected.length > 0">
+              {{ totalPrice | number('0,0') }} đ
+            </span>
+            <product-add-to-cart-button :product="product" :optionsSelected="optionsSelected" :totalPrice="totalPrice" />
           </div>
         </div>
       </div>
@@ -118,17 +122,18 @@
       </div>
     </div>
   </section>
-
-  
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'nuxt-property-decorator'
+import { Component, Vue, Prop, Watch } from 'nuxt-property-decorator'
 import { Tabs, Tab } from 'vue-slim-tabs'
+import ProductAddToCartButton from '@/components/Product/AddToCartButton/index.vue'
 
 @Component({
   components: {
-    Tabs, Tab
+    Tabs,
+    Tab,
+    ProductAddToCartButton
   }
 })
 export default class ProductItemDetail extends Vue {
@@ -139,13 +144,42 @@ export default class ProductItemDetail extends Vue {
     gallery: HTMLDivElement
   }
 
+  optionsSelected: any = []
+  optionPrice: any = []
+  totalPrice: number = 0
+
+  onOptionChange() {
+    // calculate price
+    this.optionsSelected.map((option, i) => {
+      this.optionPrice[i] = {
+        mode: option.mode,
+        price: +option.price
+      }
+    })
+    
+    let optPrice: number = 0
+    this.optionPrice.map(option => {
+      if (option.mode === 'inc') {
+        optPrice += +option.price
+      }
+
+      if (option.mode === 'dec') {
+        optPrice -= +option.price
+      }
+    })
+
+    this.totalPrice = this.product.price + optPrice
+  }
 
   mounted() {
+    const self = this
     this.$nextTick(() => {
-      (window as any).lightGallery(this.$refs.gallery, {
+      (window as any).lightGallery(self.$refs.gallery, {
         selector: '.lg-selector',
         download: false
       })
+
+      self.totalPrice = self.product.price
     })
   }
 }
