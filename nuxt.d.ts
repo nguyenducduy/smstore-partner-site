@@ -19,8 +19,7 @@ declare module "vue/types/vue" {
     $auth: any;
     $bus: any;
     $nprogress: any;
-    $form: Form;
-    $notification: any;
+    $notify: any;
     router: any;
     ls: WebStorage;
     $helper: any;
@@ -35,8 +34,7 @@ declare module "vue/types/vue" {
     $auth: any;
     $bus: any;
     $nprogress: any;
-    $form: Form;
-    $notification: any;
+    $notify: any;
     router: any;
     ls: WebStorage;
     $helper: any;

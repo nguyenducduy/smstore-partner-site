@@ -1,3 +1,10 @@
+// Importing the crypto library
+const crypto = require("crypto")
+
+// Defining the algorithm
+var algorithm = 'aes-256-cbc'; // or any other algorithm supported by OpenSSL
+var key = '2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&';
+
 const helper = {
   env: {},
 
@@ -17,6 +24,21 @@ const helper = {
     const dateTime = date +' '+ time;
 
     return dateTime;
+  },
+
+  cipher(message) {
+    // the cipher function
+    const cipher = crypto.createCipheriv(
+      algorithm,
+      this.env.NUXT_ENV_AES_SECRET_KEY,
+      'r5u8x/A?D(G+KbPe'
+    );
+
+    let encryptedData = cipher.update(message);
+
+    encryptedData += cipher.final("base64");
+
+    return encryptedData
   }
 }
 

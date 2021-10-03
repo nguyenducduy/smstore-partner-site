@@ -1,0 +1,13 @@
+mutation createOrder(
+  $cart: String!
+  $price: String!
+  $customer: String!
+) {
+  create_order(
+    cart: $cart
+    price: $price
+    customer: $customer
+  ) {
+    code
+  }
+}

@@ -18,7 +18,8 @@ spec:
   - host: "*.tiemcuatui.com"
     http:
       paths:
-      - backend:
+      - path: /
+        backend:
           serviceName: smstore-partner-site
           servicePort: 80
-        path: /
+        

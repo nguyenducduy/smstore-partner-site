@@ -1,13 +1,22 @@
-query fetchProducts(
-  $where: products_bool_exp
+query fetchProductsByCategory (
+  $store_id: Int!
+  $slug: String!
   $offset: Int
   $limit: Int
 ) {
-  products(
+  products (
     offset: $offset
     limit: $limit
-    where: $where,
     order_by: { order_no: desc }
+    where: {
+      store_id: {_eq: $store_id},
+      is_active: {_eq: true},
+      category: {
+        slug: {
+          _eq: $slug
+        }
+      }
+    }
   ) {
     id
     name

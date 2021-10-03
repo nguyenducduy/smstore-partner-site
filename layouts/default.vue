@@ -1,13 +1,14 @@
 <template>
   <div>
     <top-bar />
-    <div class="flex flex-col flex-wrap flex-grow w-full py-1 lg:py-4 sm:flex-row sm:flex-nowrap">
+    <div class="flex flex-col flex-wrap flex-grow w-full py-4 sm:flex-row sm:flex-nowrap">
       <menu-left />
       <main role="main" class="flex-grow w-full px-4 2xl:px-20 xl:px-10 lg:px-40 md:px-20 sm:px-10">
         <nuxt :key="$route.fullPath" />
       </main>
       <menu-right />
     </div>
+    <notifications/>
   </div>
 </template>
 

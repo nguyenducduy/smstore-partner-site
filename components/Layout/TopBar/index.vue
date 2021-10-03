@@ -15,18 +15,26 @@
       </div>
     </div> 
     <div class="navbar-end">
+      <div class="mx-4 indicator">
+        <div class="mt-2 indicator-item badge badge-secondary">
+          {{ wishCount }}
+        </div> 
+        <button class="btn btn-square btn-ghost" @click="$router.push('/wish')">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fd0061" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+          </svg>
+        </button> 
+      </div>
       <div class="mx-8 indicator">
         <div class="mt-2 indicator-item badge badge-primary">
           {{ cartCount }}
         </div> 
         <button class="btn btn-square btn-ghost" @click="$router.push('/gio-hang')">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-            <circle cx="6" cy="19" r="2" />
-            <circle cx="17" cy="19" r="2" />
-            <path d="M17 17h-11v-14h-2" />
-            <path d="M6 5l14 1l-1 7h-13" />
-          </svg>
+          <lottie
+            :options="defaultOptions"
+            v-on:animCreated="handleAnimation"
+          />
         </button> 
       </div>
     </div>
@@ -38,6 +46,7 @@ import { Component, Vue } from 'nuxt-property-decorator'
 import { Getter } from 'vuex-class'
 import CategoryMenuDropdown from '@/components/Category/MenuDropdown/index.vue'
 import MenuCollapse from '@/components/Layout/MenuCollapse/index.vue'
+import * as animationData from "@/assets/cart.json";
 
 @Component({
   components: {
@@ -47,8 +56,22 @@ import MenuCollapse from '@/components/Layout/MenuCollapse/index.vue'
 })
 export default class TopBar extends Vue {
   @Getter('cart/cartCount') cartCount
+  @Getter('wish/wishCount') wishCount
 
   q: string = ''
+
+  defaultOptions = {
+    animationData: (animationData as any).default,
+    renderer: 'svg',
+    loop: false,
+    autoplay: false,
+    resizeMode: 'cover',
+  }
+  anim = null
+
+  handleAnimation(anim) {
+    this.anim = anim;
+  }
 
   goSearch() {
     this.$router.push('/tim-kiem/' + this.q)
@@ -57,6 +80,12 @@ export default class TopBar extends Vue {
   mounted() {
     this.$bus.$on('searchbar.addkeyword', q => {
       this.q = q
+    })
+
+    this.$bus.$on('cart.add', async _ => {
+      this.anim.play()
+      await this.$helper.sleep(1800)
+      this.anim.stop()
     })
   }
 }

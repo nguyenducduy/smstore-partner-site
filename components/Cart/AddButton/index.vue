@@ -36,29 +36,36 @@ export default class ProductAddToCartButton extends Vue {
     let myProduct: any = {
       key: `${this.product.id}-`,
       id: this.product.id,
+      slug: this.product.slug,
       name: this.product.name,
+      image: '',
       options: [],
       unitPrice: this.totalPrice,
       dateCreated: this.$helper.getNow(),
       quantity: 1,
-      totalPrice: this.product.price * 1
+      totalPrice: this.totalPrice
     }
 
     if (this.optionsSelected.length > 0 && this.optionsSelected.length === this.product.options.length) {      
       this.optionsSelected.map((option, k) => {
         // console.log(this.product.options[k]['name']);
         myProduct.key += `${k}-${this._getSlug(option.val)}-`
-        myProduct.options.push(
-          `${this.product.options[k]['name']}: ${option.val}`
-        )
+        myProduct.options.push({
+          name: this.product.options[k]['name'],
+          value: option
+        })
       })
 
+      if (this.product.images.length > 0) {
+        myProduct.image = this.$helper.getImage(this.product.images[0]['path'])
+      }
       // console.log(myProduct);
       this.addToCart(myProduct)
       this.saveCart()
-      
+      this.$bus.$emit('cart.add')
     } else {
       //message vui long chon option
+      this.$notify({ type: 'info', text: 'Vui lòng chọn tùy chọn của sản phẩm' })
     }
   }
 

@@ -78,11 +78,11 @@
                     <small class="text-gray-400">
                       <span v-if="optValue.mode === 'inc'" class="text-green-600">
                         +
-                        <span v-if="optValue.price !== ''">{{ +optValue.price | number('0,0') }}</span>
+                        <span v-if="optValue.price !== ''">{{ +optValue.price | number('0,0') }} &#8363;</span>
                       </span>
                       <span v-if="optValue.mode === 'dec'" class="text-red-600">
                         -
-                        <span v-if="optValue.price !== ''">{{ +optValue.price | number('0,0') }}</span>
+                        <span v-if="optValue.price !== ''">{{ +optValue.price | number('0,0') }} &#8363;</span>
                       </span>
                     </small>
                   </div> 
@@ -91,11 +91,11 @@
             </div>            
           </div>
           <div class="flex items-center">
-            <span :class="`title-font ${optionsSelected.length > 0 ? 'text-xl line-through text-gray-400 font-light' : 'text-2xl text-gray-900 font-medium'}`">
-              {{ product.price | number('0,0') }} đ
+            <span :class="`title-font ${(optionsSelected.length > 0 && product.price !== totalPrice) ? 'text-xl line-through text-gray-400 font-light' : 'text-2xl text-gray-900 font-medium'}`">
+              {{ product.price | number('0,0') }} &#8363;
             </span>
-            <span :class="`ml-4 text-2xl font-medium text-gray-900 title-font`" v-if="optionsSelected.length > 0">
-              {{ totalPrice | number('0,0') }} đ
+            <span :class="`ml-4 text-2xl font-medium text-gray-900 title-font`" v-if="optionsSelected.length > 0 && product.price !== totalPrice">
+              {{ totalPrice | number('0,0') }} &#8363;
             </span>
             <product-add-to-cart-button :product="product" :optionsSelected="optionsSelected" :totalPrice="totalPrice" />
           </div>
@@ -127,7 +127,7 @@
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'nuxt-property-decorator'
 import { Tabs, Tab } from 'vue-slim-tabs'
-import ProductAddToCartButton from '@/components/Product/AddToCartButton/index.vue'
+import ProductAddToCartButton from '@/components/Cart/AddButton/index.vue'
 
 @Component({
   components: {

@@ -4,7 +4,6 @@ import {
 import { onError } from "apollo-link-error";
 import fetch from 'isomorphic-fetch';
 import { createHttpLink } from "apollo-link-http";
-import jwtDecode from 'jwt-decode';
 
 export default function({
   app,
@@ -16,9 +15,11 @@ export default function({
   }
 }) {  
   const errorLink = onError(error => {
-    console.log(error);
     //fix when a media is deleted.
     if (error['graphQLErrors']) {
+      console.log("graphQLErrors: " + error);
+      console.log(error);
+
       // if (error['operation']['operationName'] === 'fetchAudio') {
       //   store.commit('player/RESET');
         
@@ -35,7 +36,9 @@ export default function({
   // console.log('Current environment is: ', env.NODE_ENV);
   console.info('Connected to GraphQL server at: ', NUXT_ENV_GRAPHQL_URI);
 
-  let token = app.$cookiz.get('token');
+  const storeId = app.$cookiz.get('storeId');
+  console.log(storeId);
+  
 
   return {
     defaultHttpLink: false,
@@ -43,6 +46,8 @@ export default function({
       credentials: 'include',
       uri: NUXT_ENV_GRAPHQL_URI,
       fetch: (uri, options) => {
+        options.headers['X-Hasura-Store-Id'] = storeId;
+
         return fetch(uri, options)
       },
     })]),

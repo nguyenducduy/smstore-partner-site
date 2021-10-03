@@ -39,4 +39,6 @@ export default {
     }
   }
 };
+
+export const EVENT_CART_TOTAL_UNIT_PRICE = 'cart-total-unit-price'
   
