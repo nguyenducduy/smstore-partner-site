@@ -111,7 +111,7 @@ export default class CategoryMenuDropdown extends Vue {
   async mounted() {
     const r = await this.$apollo.query({
       query: fetchCategories,
-      variables: { id: this.currentStoreId },
+      variables: { store_id: this.currentStoreId },
     })
 
     this.categories = r.data.categories
