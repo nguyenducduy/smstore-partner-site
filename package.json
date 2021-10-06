@@ -33,6 +33,7 @@
     "vee-validate": "^3.4.13",
     "vue-apollo": "^3.0.7",
     "vue-axios": "^3.2.5",
+    "vue-gtag": "^1.16.1",
     "vue-infinite-loading": "^2.4.5",
     "vue-lazyload": "^1.3.3",
     "vue-lottie": "^0.2.1",
@@ -42,6 +43,7 @@
     "vue-slim-tabs": "^0.4.0",
     "vue-social-sharing": "^3.0.8",
     "vue2-filters": "^0.13.0",
+    "vueperslides": "^2.15.2",
     "vuex-class": "^0.3.2"
   },
   "devDependencies": {

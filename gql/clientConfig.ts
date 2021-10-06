@@ -37,8 +37,6 @@ export default function({
   console.info('Connected to GraphQL server at: ', NUXT_ENV_GRAPHQL_URI);
 
   const storeId = app.$cookiz.get('storeId');
-  console.log(storeId);
-  
 
   return {
     defaultHttpLink: false,
@@ -46,8 +44,10 @@ export default function({
       credentials: 'include',
       uri: NUXT_ENV_GRAPHQL_URI,
       fetch: (uri, options) => {
-        options.headers['X-Hasura-Store-Id'] = storeId;
-
+        if (typeof storeId !== 'undefined') {
+          options.headers['X-Hasura-Store-Id'] = storeId;
+        }
+        
         return fetch(uri, options)
       },
     })]),

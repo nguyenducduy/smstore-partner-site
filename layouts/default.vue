@@ -52,8 +52,8 @@ export default class DefaultLayout extends Vue {
 
 @media (min-width: 1280px) {
   .w-fixed {
-    flex: 0 1 300px;
-    min-width: 300px;
+    flex: 0 1 200px;
+    min-width: 200px;
   }
 }
 

@@ -32,7 +32,7 @@
     </li> -->
     <li class="flex flex-row my-8 ml-4">
       <span class="h-12 text-sm text-gray-500">
-        &copy; 2021, tct
+        &copy; 2021 Powered by tiemcuatui.com
       </span>
       <!-- <a href="#"
         class="h-12 text-gray-600 rounded-lg">

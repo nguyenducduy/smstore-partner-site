@@ -6,13 +6,13 @@
           {{ product.category.name }}
         </nuxt-link>
       </p>
-      <p class="text-sm text-gray-400 uppercase line-clamp-1 hover:text-blue-400">
+      <p class="text-sm text-gray-400 uppercase hover:text-blue-400">
         <nuxt-link :to="`/san-pham/${product.slug}`">
           {{ product.name }}
         </nuxt-link>
       </p>
     </div>
-    <div class="py-4 prod-img">
+    <div class="py-2 prod-img">
       <nuxt-link :to="`/san-pham/${product.slug}`" v-if="product.images.length > 0">
         <img
           :data-src="$helper.getImage(product.images[0].path)"

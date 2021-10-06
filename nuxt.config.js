@@ -49,6 +49,7 @@ export default {
     { src: '@/plugins/vue-lottie.js', mode: 'client' },
     { src: '@/plugins/vue-infinite.js', mode: 'client' },
     { src: '@/plugins/loading.js' },
+    { src: '@/plugins/vue-gtag.js' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -69,7 +70,7 @@ export default {
       plugins: [
         'moment-duration-format'
       ]
-    }],
+    }]
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -103,5 +104,5 @@ export default {
 
   tailwindcss: {
     jit: true
-  }
+  },
 }
