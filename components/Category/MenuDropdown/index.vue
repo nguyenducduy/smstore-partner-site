@@ -102,23 +102,20 @@ import { Getter } from 'vuex-class'
 
 import fetchCategories from '@/gql/queries/fetchCategories.gql'
 
-@Component({
-  apollo: {
-    categories: {
-      prefetch: true,
-      query: fetchCategories,
-      variables() {
-        return {
-          store_id: this.currentStoreId
-        }
-      }
-    }
-  }
-})
+@Component({})
 export default class CategoryMenuDropdown extends Vue {
   @Getter('currentStoreId') currentStoreId
 
   categories: any = null;
+
+  async mounted() {
+    const r = await this.$apollo.query({
+      query: fetchCategories,
+      variables: { id: this.currentStoreId },
+    })
+
+    this.categories = r.data.categories
+  }
 }
 </script>
 
