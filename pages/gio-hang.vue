@@ -1,11 +1,11 @@
 <template>
   <section class="overflow-hidden text-gray-700 bg-white body-font">
-    <div class="container px-5 py-8 mx-auto">
+    <div class="container py-8 mx-auto px-auto md:px-5" v-if="cartCount > 0">
       <h1 class="pb-4 text-2xl font-medium text-gray-700">Giỏ hàng</h1>
       <table class="table w-full">
         <thead>
           <tr>
-            <th class="hidden md:block">
+            <th class="table-cell">
               <label>
                 <input
                   type="checkbox"
@@ -15,16 +15,16 @@
                 />
               </label>
             </th> 
-            <th>Sản phẩm ({{ cartCount }})</th> 
-            <th class="hidden lg:block lg:mx-auto lg:my-auto ">Số lượng</th> 
-            <th>Đơn giá</th> 
-            <th>Tổng giá</th>
+            <th class="table-cell">Sản phẩm ({{ cartCount }})</th> 
+            <th class="hidden lg:table-cell lg:mx-auto lg:my-auto ">Số lượng</th> 
+            <th class="table-cell">Đơn giá</th> 
+            <th class="hidden md:table-cell">Tổng giá</th>
             <th></th>
           </tr>
         </thead> 
         <tbody>  
           <tr v-for="(product, i) in cart" :key="i">
-            <th class="hidden md:block">
+            <th class="table-cell">
               <label>
                 <input
                   type="checkbox"
@@ -35,7 +35,7 @@
                 />
               </label>
             </th> 
-            <td>
+            <td class="table-cell">
               <div class="flex items-center space-x-3">
                 <div class="avatar">
                   <div class="w-6 md:w-20 mask">
@@ -45,7 +45,7 @@
                   </div>
                 </div> 
                 <div>
-                  <div class="text-sm text-gray-700 uppercase hover:text-blue-400 md:text-xl">
+                  <div class="text-sm text-gray-700 uppercase hover:text-blue-400 md:text-lg">
                     <nuxt-link :to="`/san-pham/${product.slug}`" class="break-words">{{ product.name }}</nuxt-link>
                   </div> 
                   <div class="text-sm text-gray-600">
@@ -72,20 +72,20 @@
                       </div>
                     </div>
                   </div>
-                  <cart-input-quantity :quantity="product.quantity" :productKey="product.key" class="block lg:hidden" />
+                  <cart-input-quantity :quantity="product.quantity" :productKey="product.key" class="block mt-4 lg:hidden" />
                 </div>
               </div>
             </td> 
-            <td class="hidden lg:block">
+            <td class="hidden lg:table-cell">
               <cart-input-quantity :quantity="product.quantity" :productKey="product.key" />
             </td> 
-            <td>
+            <td class="table-cell">
               {{ product.unitPrice | number('0,0') }} &#8363;
             </td> 
-            <th>
+            <th class="hidden md:table-cell">
               {{ product.totalPrice | number('0,0') }} &#8363;
             </th>
-            <th>
+            <th class="table-cell">
               <product-remove-from-cart-button :product="product" />
             </th>
           </tr>
@@ -93,6 +93,9 @@
       </table>
       <hr class="mt-6">
       <cart-checkout-form :sumPrice="sumPrice" />
+    </div>
+    <div class="container py-8 mx-auto text-center px-auto md:px-5" v-else>
+      Giỏ hàng trống
     </div>
   </section>
 </template>
@@ -154,5 +157,8 @@ export default class CartPage extends Vue {
 <style>
   .table td {
     white-space: inherit !important;
+  }
+  .table thead th {
+    background: #fff !important;
   }
 </style>

@@ -1,8 +1,8 @@
 <template>
-  <div class="flex mx-2">
+  <div class="flex">
     <ValidationObserver v-slot="{ handleSubmit }" class="w-full">
       <form @submit.prevent="handleSubmit(onOrder)" class="flex flex-col-reverse md:flex-row">
-        <div class="w-full p-4 pt-6 mx-auto md:w-1/2">
+        <div class="w-full pt-6 mx-auto md:p-4 md:w-1/2">
           <div>
             <div class="p-2 card-body">
               <div :class="`mb-2 text-sm font-light alert alert-${alertType}`" v-if="message !== ''">
@@ -71,7 +71,7 @@
           </div>
         </div>
         <div class="w-full md:px-2 md:w-1/2">
-          <div class="p-4">
+          <div class="md:p-4">
             <div class="flex justify-between">
               <div class="m-2 font-light text-center text-gray-700 lg:px-4 lg:py-2 ">
                 Số tiền phải thanh toán

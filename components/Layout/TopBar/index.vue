@@ -4,13 +4,13 @@
       <menu-collapse />
     </div> 
     <div class="mx-2 navbar-start">
-      <nuxt-link to="/" class="hidden lg:block md:hidden sm:block" >
-        <img :src="$helper.getImage(currentShopLogo)" class="w-10 lg:ml-4 sm:ml-4">
+      <nuxt-link to="/" class="lg:block md:hidden sm:block" >
+        <img :src="$helper.getImage(currentShopLogo)" class="w-10 sm:mx-4">
       </nuxt-link>
       <category-menu-dropdown class="hidden lg:block md:block sm:block" />
     </div> 
-    <div class="flex px-2 mx-2 navbar-center lg:flex md:w-1/2 sm:flex xl:flex">
-      <div class="form-control md:w-1/2 lg:w-full">
+    <div class="flex justify-center px-2 mx-2 navbar-center lg:flex md:w-1/2 sm:flex xl:flex">
+      <div class="w-full md:w-9/12 form-control">
         <input type="text" placeholder="Tìm kiếm" class="bg-gray-100 input search-bar" v-model="q" @keyup.enter="goSearch()">
       </div>
     </div> 
@@ -100,28 +100,28 @@ export default class TopBar extends Vue {
 //   }
 // }
 
-@media (min-width: 768px) {
-  .search-bar {
-    min-width: 300px;
-  }
-}
+// @media (min-width: 768px) {
+//   .search-bar {
+//     min-width: 300px;
+//   }
+// }
 
-@media (min-width: 1024px) {
-  .search-bar {
-    min-width: 200px;
-  }
-}
+// @media (min-width: 1024px) {
+//   .search-bar {
+//     min-width: 200px;
+//   }
+// }
 
-@media (min-width: 1280px) {
-  .search-bar {
-    min-width: 500px;
-  }
-}
+// @media (min-width: 1280px) {
+//   .search-bar {
+//     min-width: 500px;
+//   }
+// }
 
-@media (min-width: 1536px) {
-  .search-bar {
-    min-width: 500px;
-  }
-}
+// @media (min-width: 1536px) {
+//   .search-bar {
+//     min-width: 500px;
+//   }
+// }
 
 </style>

@@ -3,12 +3,12 @@
     <div class="container px-5 py-8 mx-auto">
       <div class="flex flex-wrap mx-auto mb-6">
         <client-only>
-          <div ref="gallery" class="flex flex-row w-full border border-gray-200 rounded xl:w-1/2 h-96">
+          <div ref="gallery" class="flex flex-row w-full xl:w-1/2 h-96">
             <div v-for="(image, i) in product.images" :key="i">
               <a
                 :href="$helper.getImage(image.path)"
                 class="lg-selector">
-                <img :src="$helper.getImage(image.path)" class="object-cover object-center h-full">
+                <img :src="$helper.getImage(image.path)" :class="`object-cover object-center h-full scale-x-95 ${(i % 2) ? 'scale-y-90' : '' } rounded-xl`">
               </a>
             </div>
           </div>

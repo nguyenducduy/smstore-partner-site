@@ -1,6 +1,6 @@
 <template>
   <section class="overflow-hidden text-gray-700 bg-white body-font">
-    <div class="container px-5 py-8 mx-auto">
+    <div class="container py-8 mx-auto px-auto md:px-5" v-if="wishCount > 0">
       <h1 class="pb-4 text-2xl font-medium text-gray-700">Muốn mua</h1>
       <table class="table w-full">
         <thead>
@@ -16,6 +16,7 @@
               </label>
             </th> 
             <th>Sản phẩm ({{ wishCount }})</th> 
+            <th>Đơn giá</th> 
             <th></th>
           </tr>
         </thead> 
@@ -47,13 +48,19 @@
                   </div> 
                 </div>
               </div>
-            </td> 
+            </td>
+            <td>
+              {{ product.unitPrice | number('0,0') }} &#8363;
+            </td>  
             <th>
               <!-- <product-remove-from-cart-button :product="product" /> -->
             </th>
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="container py-8 mx-auto text-center px-auto md:px-5" v-else>
+      Yêu thích trống
     </div>
   </section>
 </template>

@@ -71,7 +71,7 @@
                 >
                   <template v-if="child1.children.length > 0">
                     <li v-for="child2 in child1.children" :key="child2.slug" class="p-3 hover:bg-blue-100">
-                      <nuxt-link :to="`/${child2.slug}`">
+                      <nuxt-link :to="`/danh-muc/${child2.slug}`">
                         {{ child2.name }}
                       </nuxt-link>
                     </li>

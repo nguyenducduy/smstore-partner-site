@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col justify-center p-4 bg-white rounded-lg shadow-lg card hover:shadow-2xl" v-lazy-container="{ selector: 'img' }" >
+  <div class="flex flex-col justify-center p-2 bg-white rounded-lg shadow-lg md:p-4 card hover:shadow-2xl" v-lazy-container="{ selector: 'img' }" >
     <div class="prod-title">
-      <p class="text-gray-700 hover:text-blue-900">
+      <p class="text-sm text-gray-700 hover:text-blue-900 md:text-base">
         <nuxt-link :to="`/danh-muc/${product.category.slug}`">
           {{ product.category.name }}
         </nuxt-link>

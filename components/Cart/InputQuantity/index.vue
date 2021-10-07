@@ -2,6 +2,7 @@
   <div class="w-32 h-10 custom-number-input">
     <div class="relative flex flex-row w-full h-10 mt-1 bg-transparent rounded-lg">
       <button
+        :disabled="counter === 1"
         @click.prevent="onDecrease"
         class="w-8 h-full text-gray-600 bg-gray-100 rounded-l outline-none cursor-pointer md:w-20 hover:text-red-400 hover:bg-gray-700">
         <span class="m-auto text-sm font-thin md:text-2xl">−</span>

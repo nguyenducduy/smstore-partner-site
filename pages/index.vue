@@ -1,8 +1,20 @@
 <template>
-  <div v-lazy-container="{ selector: 'img' }">
+  <div >
     <loading v-show="loading" />
     
-    <div class="grid grid-cols-2 gap-6 mt-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-4">
+    <div class="mb-4 md:mb-8 rounded-xl" v-show="!loading">
+      <vueper-slides class="no-shadow" autoplay fade>
+        <vueper-slide v-for="(slide, i) in slides"
+          :key="i"
+          :image="slide.image"
+          :link="slide.link"
+         />
+      </vueper-slides>
+    </div>
+    
+    <div
+      v-lazy-container="{ selector: 'img' }"
+      class="grid grid-cols-2 gap-2 md:gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-4">
       <product-item v-for="(product, i) in products" :key="i" :product="product" />
     </div>
 
@@ -17,11 +29,15 @@
 import { Component, Vue, Watch } from 'nuxt-property-decorator'
 import { Getter, Action, Mutation } from 'vuex-class'
 import ProductItem from '@/components/Product/Item/index.vue'
+import { VueperSlides, VueperSlide } from 'vueperslides'
+import 'vueperslides/dist/vueperslides.css'
 
 @Component({
   layout: 'default',
   components: {
     ProductItem,
+    VueperSlides,
+    VueperSlide
   }
 })
 export default class HomePage extends Vue {
@@ -31,6 +47,34 @@ export default class HomePage extends Vue {
 
   loading: boolean = false
   infiniteState: any = null
+
+  slides: any = [
+    {
+      title: 'Mountain 1',
+      content: 'Slide 1 content.',
+      image: 'https://www.w3schools.com/howto/img_nature_wide.jpg',
+      link: 'https://www.maxrivephotography.com/index/C0000rU1RKCHdqwI/G0000X57AtIzuRX0/I0000Gvr9HqdtyXk'
+    },
+    {
+      title: 'Mountain 2',
+      content: 'Slide 2 content.',
+      image: 'https://www.w3schools.com/howto/img_snow_wide.jpg',
+      link: 'https://www.maxrivephotography.com/index/C0000rU1RKCHdqwI/G0000X57AtIzuRX0/I0000Gvr9HqdtyXk'
+    },
+    {
+      title: 'Mountain 3',
+      content: 'Slide 3 content.',
+      image: 'https://www.w3schools.com/howto/img_lights_wide.jpg',
+      link: 'https://www.maxrivephotography.com/index/C0000rU1RKCHdqwI/G0000X57AtIzuRX0/I0000Gvr9HqdtyXk'
+    },
+    {
+      title: 'Mountain 3',
+      content: 'Slide 3 content.',
+      image: 'https://www.w3schools.com/howto/img_mountains_wide.jpg',
+      link: 'https://www.maxrivephotography.com/index/C0000rU1RKCHdqwI/G0000X57AtIzuRX0/I0000Gvr9HqdtyXk'
+    },
+
+  ]
 
   async loadMore($state) {
     await this.loadProducts({ infiniteState: $state });
@@ -47,3 +91,8 @@ export default class HomePage extends Vue {
 }
 </script>
 
+<style >
+.vueperslides__parallax-wrapper {
+  border-radius: 0.3rem !important;
+}
+</style>

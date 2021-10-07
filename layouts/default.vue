@@ -30,6 +30,10 @@ export default class DefaultLayout extends Vue {
   @Getter('isShop') isShop
 
   mounted() {
+    if (process.client) {
+      window.scrollTo({ top: 0 })
+    }
+    
     if (!this.isShop) {
       this.$router.replace('/setup')
     }
@@ -62,6 +66,11 @@ export default class DefaultLayout extends Vue {
     flex: 0 1 300px;
     min-width: 300px;
   }
+}
+
+.checkbox {
+  height: 1rem;
+  width: 1rem;
 }
 
 </style>

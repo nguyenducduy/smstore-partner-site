@@ -1,4 +1,9 @@
 const fs = require('fs')
+const features = [
+  'fetch',
+  'Object.entries',
+  'IntersectionObserver',
+].join('%2C');
 
 export default {
   target: 'server',
@@ -28,6 +33,9 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+    ],
+    script: [
+      { src: `https://polyfill.io/v3/polyfill.min.js?features=${features}`, body: true },
     ]
   },
 
@@ -50,6 +58,7 @@ export default {
     { src: '@/plugins/vue-infinite.js', mode: 'client' },
     { src: '@/plugins/loading.js' },
     { src: '@/plugins/vue-gtag.js' },
+    // { src: '@/plugins/vue-slider.js', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
