@@ -3,7 +3,7 @@
     <div class="container px-5 py-8 mx-auto">
       <div class="flex flex-wrap mx-auto mb-6">
         <client-only>
-          <div ref="gallery" class="flex flex-row w-1/2 border border-gray-200 rounded h-96">
+          <div ref="gallery" class="flex flex-row w-full border border-gray-200 rounded xl:w-1/2 h-96">
             <div v-for="(image, i) in product.images" :key="i">
               <a
                 :href="$helper.getImage(image.path)"
@@ -63,7 +63,7 @@
               <span class="w-1/2 mr-6">{{ option.name }}</span>
               <template v-if="option.values.length > 0">
                 <div class="flex items-start w-full">
-                  <div class="mr-4 form-control" v-for="(optValue, i) in option.values" :key="i">
+                  <div class="mr-1 md:mr-4 form-control" v-for="(optValue, i) in option.values" :key="i">
                     <label class="mr-2 cursor-pointer label">
                       <span class="mr-2 label-text">{{ optValue.val }}</span> 
                       <input

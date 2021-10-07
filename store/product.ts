@@ -33,7 +33,7 @@ export const actions = {
         query: fetchProducts,
         variables: {
           where: {
-            store_id: { _eq: rootState.storeId },
+            store_id: { _eq: rootState.shop.id },
             is_active: { _eq: true }
           },
           offset: state.offset,

@@ -5,7 +5,7 @@
       <table class="table w-full">
         <thead>
           <tr>
-            <th>
+            <th class="hidden md:block">
               <label>
                 <input
                   type="checkbox"
@@ -16,7 +16,7 @@
               </label>
             </th> 
             <th>Sản phẩm ({{ cartCount }})</th> 
-            <th>Số lượng</th> 
+            <th class="hidden lg:block lg:mx-auto lg:my-auto ">Số lượng</th> 
             <th>Đơn giá</th> 
             <th>Tổng giá</th>
             <th></th>
@@ -24,7 +24,7 @@
         </thead> 
         <tbody>  
           <tr v-for="(product, i) in cart" :key="i">
-            <th>
+            <th class="hidden md:block">
               <label>
                 <input
                   type="checkbox"
@@ -38,14 +38,14 @@
             <td>
               <div class="flex items-center space-x-3">
                 <div class="avatar">
-                  <div class="w-20 mask">
+                  <div class="w-6 md:w-20 mask">
                     <nuxt-link :to="`/san-pham/${product.slug}`">
-                      <img :src="product.image" :alt="product.name" class="rounded-md">
+                      <img :src="product.image" :alt="product.name" class="rounded-md ">
                     </nuxt-link>
                   </div>
                 </div> 
                 <div>
-                  <div class="text-gray-700 uppercase hover:text-blue-400">
+                  <div class="text-sm text-gray-700 uppercase hover:text-blue-400 md:text-xl">
                     <nuxt-link :to="`/san-pham/${product.slug}`" class="break-words">{{ product.name }}</nuxt-link>
                   </div> 
                   <div class="text-sm text-gray-600">
@@ -72,10 +72,11 @@
                       </div>
                     </div>
                   </div>
+                  <cart-input-quantity :quantity="product.quantity" :productKey="product.key" class="block lg:hidden" />
                 </div>
               </div>
             </td> 
-            <td class="w-20">
+            <td class="hidden lg:block">
               <cart-input-quantity :quantity="product.quantity" :productKey="product.key" />
             </td> 
             <td>

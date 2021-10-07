@@ -25,13 +25,14 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-
+import { Mutation } from 'vuex-class'
 import fetchStore from '@/gql/queries/fetchStore.gql'
 
 @Component({
   layout: 'blank'
 })
 export default class SettingUpPage extends Vue {
+  @Mutation('SET_SHOP') setShop
   redirectUrl: string = ''
   domain: string = ''
   
@@ -72,20 +73,13 @@ export default class SettingUpPage extends Vue {
         }
       }
     });
-
-    console.log(r.data.stores);
     
     if (r.data && r.data.stores.length > 0) {
-      this.__setStoreInfo(r.data.stores[0].id)
+      this.setShop(r.data.stores[0])
       this.$router.replace('/')
     } else {
       this.notFoundShop = true
     }
-  }
-
-  __setStoreInfo(id) {
-    Vue.ls.set('storeId', id);
-    this.$cookiz.set('storeId', id);
   }
 }
 </script>

@@ -6,5 +6,6 @@ query fetchStore(
   ) {
     id
     domain
+    logo_path
   }
 }

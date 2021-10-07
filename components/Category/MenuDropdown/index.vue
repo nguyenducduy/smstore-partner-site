@@ -25,9 +25,9 @@
             class="flex items-center w-full text-left outline-none focus:outline-none"
           >
             <span class="flex-1 pr-1">
-              <nuxt-link :to="`/${cate.slug}`">
+              <!-- <nuxt-link :to="`/danh-muc/${cate.slug}`"> -->
                 {{ cate.name }}
-              </nuxt-link>
+              <!-- </nuxt-link> -->
             </span>
             <span class="mr-auto">
               <svg
@@ -50,9 +50,9 @@
                   class="flex items-center w-full text-left outline-none focus:outline-none"
                 >
                   <span class="flex-1 pr-1">
-                    <nuxt-link :to="`/${child1.slug}`">
+                    <!-- <nuxt-link :to="`/danh-muc/${child1.slug}`"> -->
                       {{ child1.name }}
-                    </nuxt-link>
+                    <!-- </nuxt-link> -->
                   </span>
                   <span class="mr-auto">
                     <svg
@@ -79,7 +79,7 @@
                 </ul>
               </li>
               <li v-else :key="child1.slug" class="p-3 hover:bg-blue-100">
-                <nuxt-link :to="`/${child1.slug}`">
+                <nuxt-link :to="`/danh-muc/${child1.slug}`">
                   {{ child1.name }}
                 </nuxt-link>
               </li>
@@ -87,7 +87,7 @@
           </ul>
         </li>
         <li v-else class="p-3 rounded-sm hover:bg-blue-100" :key="cate.slug">
-          <nuxt-link :to="`/${cate.slug}`">
+          <nuxt-link :to="`/danh-muc/${cate.slug}`">
             {{ cate.name }}
           </nuxt-link>
         </li>
@@ -104,14 +104,14 @@ import fetchCategories from '@/gql/queries/fetchCategories.gql'
 
 @Component({})
 export default class CategoryMenuDropdown extends Vue {
-  @Getter('currentStoreId') currentStoreId
+  @Getter('currentShopId') currentShopId
 
   categories: any = null;
 
   async mounted() {
     const r = await this.$apollo.query({
       query: fetchCategories,
-      variables: { store_id: this.currentStoreId },
+      variables: { store_id: this.currentShopId },
     })
 
     this.categories = r.data.categories

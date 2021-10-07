@@ -1,18 +1,18 @@
 import Vue from 'vue';
 
 export default function({ app, store, redirect }) {
-  const storeId = process.server ? app.$cookiz.get('storeId') : Vue.ls.get('storeId');
+  const shop = process.server ? app.$cookiz.get('shop') : Vue.ls.get('shop');
   const cart = process.server ? app.$cookiz.get('cart') : Vue.ls.get('cart');
   const cartCount = process.server ? app.$cookiz.get('cartCount') : Vue.ls.get('cartCount');
   const wish = process.server ? app.$cookiz.get('wish') : Vue.ls.get('wish');
   const wishCount = process.server ? app.$cookiz.get('wishCount') : Vue.ls.get('wishCount');
-  
-  if (typeof storeId === 'undefined') {
-    return redirect('/waiting')
+
+  if (typeof store === 'undefined') {
+    return redirect('/setup')
   }
 
-  if (typeof storeId !== 'undefined' && storeId !== null) {
-    store.commit('SET_STORE_ID', storeId);
+  if (typeof shop !== 'undefined' && shop !== null) {
+    store.commit('SET_SHOP', shop);
   }
 
   if (typeof cart !== 'undefined' && cart !== null) {

@@ -3,20 +3,20 @@
     <div class="relative flex flex-row w-full h-10 mt-1 bg-transparent rounded-lg">
       <button
         @click.prevent="onDecrease"
-        class="w-20 h-full text-gray-600 bg-gray-100 rounded-l outline-none cursor-pointer hover:text-red-400 hover:bg-gray-700">
-        <span class="m-auto text-2xl font-thin">−</span>
+        class="w-8 h-full text-gray-600 bg-gray-100 rounded-l outline-none cursor-pointer md:w-20 hover:text-red-400 hover:bg-gray-700">
+        <span class="m-auto text-sm font-thin md:text-2xl">−</span>
       </button>
       <input
         type="number"
-        class="flex items-center w-full font-semibold text-center text-gray-700 bg-gray-100 outline-none focus:outline-none text-md hover:text-black focus:text-black md:text-basecursor-default"
+        class="flex items-center w-8 font-semibold text-center text-gray-700 bg-gray-100 outline-none md:w-full focus:outline-none text-md hover:text-black focus:text-black md:text-basecursor-default"
         name="custom-input-number"
         v-model="counter"
         disabled
       />
       <button
         @click.prevent="onIncrease"
-        class="w-20 h-full text-gray-600 bg-gray-100 rounded-r cursor-pointer hover:text-green-400 hover:bg-gray-700">
-        <span class="m-auto text-2xl font-thin">+</span>
+        class="w-8 h-full text-gray-600 bg-gray-100 rounded-r cursor-pointer md:w-20 hover:text-green-400 hover:bg-gray-700">
+        <span class="m-auto text-sm font-thin md:text-2xl">+</span>
       </button>
     </div>
   </div>

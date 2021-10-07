@@ -1,8 +1,8 @@
 <template>
   <div class="flex mx-2">
     <ValidationObserver v-slot="{ handleSubmit }" class="w-full">
-      <form @submit.prevent="handleSubmit(onOrder)" class="flex">
-        <div class="w-1/2 p-4 pt-6">
+      <form @submit.prevent="handleSubmit(onOrder)" class="flex flex-col-reverse md:flex-row">
+        <div class="w-full p-4 pt-6 mx-auto md:w-1/2">
           <div>
             <div class="p-2 card-body">
               <div :class="`mb-2 text-sm font-light alert alert-${alertType}`" v-if="message !== ''">
@@ -70,7 +70,7 @@
             </div>
           </div>
         </div>
-        <div class="lg:px-2 lg:w-1/2">
+        <div class="w-full md:px-2 md:w-1/2">
           <div class="p-4">
             <div class="flex justify-between">
               <div class="m-2 font-light text-center text-gray-700 lg:px-4 lg:py-2 ">
@@ -104,7 +104,7 @@ import createOrder from '@/gql/mutations/createOrder.gql'
   }
 })
 export default class CartCheckoutForm extends Vue {
-  @Getter('currentStoreId') currentStoreId
+  @Getter('currentShopId') currentShopId
   @Getter('cart/checkout') cartCheckout
   @Mutation('cart/CHECKOUT_DONE') checkoutDone
   @Mutation('cart/SAVE_CART') saveCart

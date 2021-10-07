@@ -32,7 +32,7 @@ export const actions = {
       const r = await this.app.apolloProvider.defaultClient.query({
         query: fetchProductsByCategory,
         variables: {
-          store_id: rootState.storeId,
+          store_id: rootState.shop.id,
           offset: state.offset,
           limit: state.limit,
           slug: payload.slug

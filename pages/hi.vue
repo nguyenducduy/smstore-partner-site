@@ -1,6 +1,6 @@
 <template>
   <div v-lazy-container="{ selector: 'img' }">
-    <p >Hiiiiiii, {{ currentStoreId }}!</p>
+    <p >Hiiiiiii, {{ currentShopId }}!</p>
   </div>
 </template>
 
@@ -12,8 +12,8 @@ import { Getter } from 'vuex-class'
   layout: 'default',
 })
 export default class HomePage extends Vue {
-  @Getter('isStore') isStore
-  @Getter('currentStoreId') currentStoreId
+  @Getter('isShop') isShop
+  @Getter('currentShopId') currentShopId
 
   mounted() {
 

@@ -18,8 +18,8 @@ import fetchProduct from '@/gql/queries/fetchProduct.gql'
   }
 })
 export default class ProductDetailPage extends Vue {
-  @Getter('isStore') isStore
-  @Getter('currentStoreId') currentStoreId
+  @Getter('isShop') isShop
+  @Getter('currentShopId') currentShopId
 
   product: any = null
 
@@ -28,7 +28,7 @@ export default class ProductDetailPage extends Vue {
       query: fetchProduct,
       variables: {
         where: {
-          store_id: { _eq: this.currentStoreId },
+          store_id: { _eq: this.currentShopId },
           slug: { _eq: this.$route.params.slug },
           is_active: { _eq: true }
         }

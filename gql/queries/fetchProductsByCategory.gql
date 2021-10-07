@@ -25,7 +25,7 @@ query fetchProductsByCategory (
     in_stock
     price
     order_no
-    order_confirmed
+    
     category {
       id
       name

@@ -1,10 +1,18 @@
+import Vue from 'vue'
+
 export const state = () => ({
-  storeId: null,
+  shop: null,
 })
 
 export const mutations = {
-  SET_STORE_ID(state, id) {
-    state.storeId = id;
+  SET_SHOP(state, shop) {
+    state.shop = shop;
+    
+    if (process.client) { 
+      Vue.ls.set('shop', shop);
+    } else {
+      this.$cookiz.set('shop', shop);
+    }
   },
 }
 
@@ -13,14 +21,25 @@ export const actions = {
 };
 
 export const getters = {
-  isStore(state) {
-    if (typeof state.storeId === 'undefined' || state.storeId === null) {
+  isShop(state) {
+    if (state.shop === null) {
       return false;
     } else {
       return true;
     }
   },
-  currentStoreId(state) {
-    return state.storeId || null;
+  currentShopId(state) {
+    if (state.shop !== null) {
+      return state.shop.id;
+    } else {
+      return 0
+    }
+  },
+  currentShopLogo(state) {
+    if (state.shop !== null) {
+      return state.shop.logo_path;
+    } else {
+      return 0
+    }
   },
 };

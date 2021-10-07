@@ -1,21 +1,21 @@
 <template>
   <div class="sticky top-0 z-50 mb-2 bg-white shadow-sm navbar">
-    <div class="flex-none lg:flex 2xl:hidden xl:hidden">
+    <div class="flex-none lg:flex xl:hidden">
       <menu-collapse />
     </div> 
     <div class="mx-2 navbar-start">
-      <nuxt-link to="/" class="lg:block md:block sm:block" >
-        <img src="/img/logo.png" alt="logo" class="w-10 lg:ml-4 sm:ml-4">
+      <nuxt-link to="/" class="hidden lg:block md:hidden sm:block" >
+        <img :src="$helper.getImage(currentShopLogo)" class="w-10 lg:ml-4 sm:ml-4">
       </nuxt-link>
-    </div> 
-    <div class="flex px-2 mx-2 navbar-center lg:flex md:flex sm:flex">
       <category-menu-dropdown class="hidden lg:block md:block sm:block" />
-      <div class="form-control">
+    </div> 
+    <div class="flex px-2 mx-2 navbar-center lg:flex md:w-1/2 sm:flex xl:flex">
+      <div class="form-control md:w-1/2 lg:w-full">
         <input type="text" placeholder="Tìm kiếm" class="bg-gray-100 input search-bar" v-model="q" @keyup.enter="goSearch()">
       </div>
     </div> 
     <div class="navbar-end">
-      <div class="mx-4 indicator">
+      <div class="hidden mr-4 xl:mx-4 md:mx-4 indicator">
         <div class="mt-2 indicator-item badge badge-secondary">
           {{ wishCount }}
         </div> 
@@ -26,7 +26,7 @@
           </svg>
         </button> 
       </div>
-      <div class="mx-8 indicator">
+      <div class="mr-4 xl:mx-8 md:mx-4 indicator">
         <div class="mt-2 indicator-item badge badge-primary">
           {{ cartCount }}
         </div> 
@@ -57,6 +57,7 @@ import * as animationData from "@/assets/cart.json";
 export default class TopBar extends Vue {
   @Getter('cart/cartCount') cartCount
   @Getter('wish/wishCount') wishCount
+  @Getter('currentShopLogo') currentShopLogo
 
   q: string = ''
 
@@ -101,13 +102,13 @@ export default class TopBar extends Vue {
 
 @media (min-width: 768px) {
   .search-bar {
-    min-width: 500px;
+    min-width: 300px;
   }
 }
 
 @media (min-width: 1024px) {
   .search-bar {
-    min-width: 500px;
+    min-width: 200px;
   }
 }
 
@@ -119,7 +120,7 @@ export default class TopBar extends Vue {
 
 @media (min-width: 1536px) {
   .search-bar {
-    min-width: 400px;
+    min-width: 500px;
   }
 }
 

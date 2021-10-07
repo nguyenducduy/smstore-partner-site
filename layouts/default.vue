@@ -3,7 +3,7 @@
     <top-bar />
     <div class="flex flex-col flex-wrap flex-grow w-full py-4 sm:flex-row sm:flex-nowrap">
       <menu-left />
-      <main role="main" class="flex-grow w-full px-4 2xl:px-20 xl:px-10 lg:px-40 md:px-20 sm:px-10">
+      <main role="main" class="flex-grow w-full px-4 2xl:px-20 xl:px-10 lg:px-40 md:px-8 sm:px-10">
         <nuxt :key="$route.fullPath" />
       </main>
       <menu-right />
@@ -27,11 +27,11 @@ import TopBar from '@/components/Layout/TopBar/index.vue'
   }
 })
 export default class DefaultLayout extends Vue {
-  @Getter('isStore') isStore
+  @Getter('isShop') isShop
 
   mounted() {
-    if (!this.isStore) {
-      this.$router.replace('/waiting')
+    if (!this.isShop) {
+      this.$router.replace('/setup')
     }
   }
 }
@@ -52,8 +52,8 @@ export default class DefaultLayout extends Vue {
 
 @media (min-width: 1280px) {
   .w-fixed {
-    flex: 0 1 200px;
-    min-width: 200px;
+    flex: 0 1 230px;
+    min-width: 230px;
   }
 }
 
