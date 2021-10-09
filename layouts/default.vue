@@ -27,15 +27,10 @@ import TopBar from '@/components/Layout/TopBar/index.vue'
   }
 })
 export default class DefaultLayout extends Vue {
-  @Getter('isShop') isShop
 
   mounted() {
     if (process.client) {
       window.scrollTo({ top: 0 })
-    }
-    
-    if (!this.isShop) {
-      this.$router.replace('/setup')
     }
   }
 }

@@ -1,0 +1,16 @@
+query fetchBanners(
+  $where: banners_bool_exp
+  $offset: Int
+  $limit: Int
+) {
+  banners(
+    offset: $offset
+    limit: $limit
+    where: $where,
+    order_by: { order_no: desc }
+  ) {
+    id
+    image_path
+    link
+  }
+}

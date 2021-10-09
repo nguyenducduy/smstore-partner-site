@@ -7,7 +7,7 @@ export default function({ app, store, redirect }) {
   const wish = process.server ? app.$cookiz.get('wish') : Vue.ls.get('wish');
   const wishCount = process.server ? app.$cookiz.get('wishCount') : Vue.ls.get('wishCount');
 
-  if (typeof store === 'undefined') {
+  if (typeof shop === 'undefined') {
     return redirect('/setup')
   }
 

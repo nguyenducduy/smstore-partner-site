@@ -65,7 +65,6 @@
                 <div class="flex items-start w-full">
                   <div class="mr-1 md:mr-4 form-control" v-for="(optValue, i) in option.values" :key="i">
                     <label class="mr-2 cursor-pointer label">
-                      <span class="mr-2 label-text">{{ optValue.val }}</span> 
                       <input
                         type="radio"
                         :name="`opt-${option.name}`"
@@ -74,6 +73,7 @@
                         v-model="optionsSelected[k]"
                         @change="onOptionChange"
                       >
+                      <span class="ml-2 label-text">{{ optValue.val }}</span> 
                     </label>
                     <small class="text-gray-400">
                       <span v-if="optValue.mode === 'inc'" class="text-green-600">

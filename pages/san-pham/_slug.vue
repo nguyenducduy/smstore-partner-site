@@ -37,8 +37,6 @@ export default class ProductDetailPage extends Vue {
 
     if (r.data && r.data.products.length > 0) {      
       this.product = r.data.products[0]
-      console.log(this.product);
-      
     } else {
 
     }

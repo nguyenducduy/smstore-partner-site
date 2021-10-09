@@ -75,7 +75,8 @@ export default class SettingUpPage extends Vue {
     });
     
     if (r.data && r.data.stores.length > 0) {
-      this.setShop(r.data.stores[0])
+      Vue.ls.set('shop', r.data.stores[0])
+      this.$cookiz.set('shop', r.data.stores[0])
       this.$router.replace('/')
     } else {
       this.notFoundShop = true

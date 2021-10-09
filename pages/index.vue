@@ -2,14 +2,8 @@
   <div >
     <loading v-show="loading" />
     
-    <div class="mb-4 md:mb-8 rounded-xl" v-show="!loading">
-      <vueper-slides class="no-shadow" autoplay fade>
-        <vueper-slide v-for="(slide, i) in slides"
-          :key="i"
-          :image="slide.image"
-          :link="slide.link"
-         />
-      </vueper-slides>
+    <div class="mb-4 md:mb-8 rounded-xl" v-show="!loading && banners.length > 0">
+      <banners :slides="banners" />
     </div>
     
     <div
@@ -29,15 +23,15 @@
 import { Component, Vue, Watch } from 'nuxt-property-decorator'
 import { Getter, Action, Mutation } from 'vuex-class'
 import ProductItem from '@/components/Product/Item/index.vue'
-import { VueperSlides, VueperSlide } from 'vueperslides'
-import 'vueperslides/dist/vueperslides.css'
+import Banners from '@/components/Banners/index.vue'
+
+import fetchBanners from '@/gql/queries/fetchBanners.gql'
 
 @Component({
   layout: 'default',
   components: {
     ProductItem,
-    VueperSlides,
-    VueperSlide
+    Banners
   }
 })
 export default class HomePage extends Vue {
@@ -47,6 +41,9 @@ export default class HomePage extends Vue {
 
   loading: boolean = false
   infiniteState: any = null
+
+  //banners
+  banners: any = []
 
   slides: any = [
     {
@@ -87,6 +84,22 @@ export default class HomePage extends Vue {
     await this.loadProducts({ infiniteState: null })
     
     this.loading = false
+  }
+
+  async mounted() {
+    const r = await this.$apollo.query({
+      query: fetchBanners,
+      variables: {
+        where: {
+          page: { _eq: 'home' },
+          is_active: { _eq: true }
+        }
+      }
+    })
+
+    if (r.data) {
+      this.banners = r.data.banners
+    }
   }
 }
 </script>

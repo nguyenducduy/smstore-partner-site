@@ -2,7 +2,7 @@
   <div>
     <li class="pb-2 my-px">
       <nuxt-link to="/"
-        :class="`flex flex-row items-center h-12 px-4 text-gray-600 rounded-lg hover:bg-blue-100 hover:text-gray-600 ${$route.fullPath === '/' ? 'border border-indigo-500 text-indigo-700' : ''}`">
+        :class="`flex flex-row items-center h-12 px-4 text-gray-600 rounded-lg hover:bg-gray-50 hover:text-gray-900 ${$route.fullPath === '/' ? ' text-indigo-700' : ''}`">
         <span class="flex items-center justify-center text-gray-400">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-smart-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6f32be" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -16,7 +16,7 @@
     
     <li class="my-px">
       <nuxt-link to="/wish"
-        :class="`flex flex-row items-center h-12 px-4 text-gray-600 rounded-lg hover:bg-blue-100 hover:text-gray-600 ${$route.fullPath === '/wish' ? 'border border-pink-500 text-pink-500' : ''}`">
+        :class="`flex flex-row items-center h-12 px-4 text-gray-600 rounded-lg hover:bg-gray-50 hover:text-gray-900 ${$route.fullPath === '/wish' ? 'text-pink-500' : ''}`">
         <span class="flex items-center justify-center text-pink-400">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -27,8 +27,8 @@
       </nuxt-link>
     </li>
     <li class="flex flex-row my-8 ml-4">
-      <span class="h-12 text-sm text-gray-500">
-        &copy; 2021 Powered by tiemcuatui.com
+      <span class="h-12 text-xs text-gray-500">
+        &copy; 2021 Powered by <a href="https://tiemcuatui.com" target="_blank">tiemcuatui.com</a>
       </span>
       <!-- <a href="#"
         class="h-12 text-gray-600 rounded-lg">

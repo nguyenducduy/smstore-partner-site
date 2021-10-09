@@ -7,12 +7,6 @@ export const state = () => ({
 export const mutations = {
   SET_SHOP(state, shop) {
     state.shop = shop;
-    
-    if (process.client) { 
-      Vue.ls.set('shop', shop);
-    } else {
-      this.$cookiz.set('shop', shop);
-    }
   },
 }
 

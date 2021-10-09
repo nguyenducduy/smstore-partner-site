@@ -20,7 +20,7 @@
       class="absolute transition duration-150 ease-in-out origin-top transform scale-0 bg-white border rounded-sm group-hover:scale-100 min-w-60"
     >
       <template v-for="cate in categories">
-        <li v-if="cate.children.length > 0" :key="cate.slug" class="relative p-3 rounded-sm hover:bg-blue-100">
+        <li v-if="cate.children.length > 0" :key="cate.slug" class="relative p-3 rounded-sm hover:bg-indigo-50">
           <button
             class="flex items-center w-full text-left outline-none focus:outline-none"
           >
@@ -45,7 +45,7 @@
             class="absolute top-0 right-0 transition duration-150 ease-in-out origin-top-left bg-white border rounded-sm min-w-60 "
           >
             <template v-for="child1 in cate.children">
-              <li v-if="child1.children.length > 0" :key="child1.slug" class="relative p-3 rounded-sm hover:bg-blue-100">
+              <li v-if="child1.children.length > 0" :key="child1.slug" class="relative p-3 rounded-sm hover:bg-indigo-50">
                 <button
                   class="flex items-center w-full text-left outline-none focus:outline-none"
                 >
@@ -70,7 +70,7 @@
                   class="absolute top-0 right-0 transition duration-150 ease-in-out origin-top-left bg-white border rounded-sm min-w-60 "
                 >
                   <template v-if="child1.children.length > 0">
-                    <li v-for="child2 in child1.children" :key="child2.slug" class="p-3 hover:bg-blue-100">
+                    <li v-for="child2 in child1.children" :key="child2.slug" class="p-3 hover:bg-indigo-50">
                       <nuxt-link :to="`/danh-muc/${child2.slug}`">
                         {{ child2.name }}
                       </nuxt-link>
@@ -78,7 +78,7 @@
                   </template>
                 </ul>
               </li>
-              <li v-else :key="child1.slug" class="p-3 hover:bg-blue-100">
+              <li v-else :key="child1.slug" class="p-3 hover:bg-indigo-50">
                 <nuxt-link :to="`/danh-muc/${child1.slug}`">
                   {{ child1.name }}
                 </nuxt-link>
@@ -86,7 +86,7 @@
             </template>            
           </ul>
         </li>
-        <li v-else class="p-3 rounded-sm hover:bg-blue-100" :key="cate.slug">
+        <li v-else class="p-3 rounded-sm hover:bg-indigo-50" :key="cate.slug">
           <nuxt-link :to="`/danh-muc/${cate.slug}`">
             {{ cate.name }}
           </nuxt-link>
