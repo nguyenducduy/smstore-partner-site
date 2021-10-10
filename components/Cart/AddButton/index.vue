@@ -1,5 +1,5 @@
 <template>
-  <div class="flex py-2 ml-auto tooltip tooltip-left" data-tip="Thêm vào giỏ hàng">
+  <div class="flex py-2 ml-auto">
     <button class="btn btn-square btn-ghost" @click.prevent="onAdd()">
       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

@@ -4,7 +4,7 @@
       <menu-collapse />
     </div> 
     <div class="mx-2 navbar-start">
-      <nuxt-link to="/" class="lg:block md:hidden sm:block" >
+      <nuxt-link to="/" class="lg:block sm:block" >
         <img :src="$helper.getImage(currentShopLogo)" class="w-10 sm:mx-4">
       </nuxt-link>
       <category-menu-dropdown class="hidden lg:block md:block sm:block" />

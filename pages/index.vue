@@ -8,7 +8,7 @@
     
     <div
       v-lazy-container="{ selector: 'img' }"
-      class="grid grid-cols-2 gap-2 md:gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-4">
+      class="grid grid-cols-2 gap-2 md:gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 md:grid-cols-4">
       <product-item v-for="(product, i) in products" :key="i" :product="product" />
     </div>
 

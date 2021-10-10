@@ -3,7 +3,7 @@
     <div class="container px-5 py-8 mx-auto">
       <div class="flex flex-wrap mx-auto mb-6">
         <client-only>
-          <div ref="gallery" class="flex flex-row w-full xl:w-1/2 h-96">
+          <div ref="gallery" class="flex flex-row w-full lg:w-1/2 xl:w-1/2 h-96">
             <div v-for="(image, i) in product.images" :key="i">
               <a
                 :href="$helper.getImage(image.path)"
@@ -21,7 +21,7 @@
           <h1 class="my-2 text-2xl font-medium text-gray-600 uppercase">
             {{ product.name }}
           </h1>
-          <!-- <div class="flex mb-4">
+          <div class="flex mb-4">
             <span class="flex items-center">
               <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
@@ -57,7 +57,7 @@
                 </svg>
               </a>
             </span>
-          </div> -->
+          </div>
           <div class="flex flex-col items-center pb-5 mt-6 mb-5 border-b-2 border-gray-200" v-if="product.options.length > 0">
             <div class="flex items-center w-full my-2" v-for="(option, k) in product.options" :key="k">
               <span class="w-1/2 mr-6">{{ option.name }}</span>
