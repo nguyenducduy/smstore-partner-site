@@ -1,4 +1,4 @@
-FROM node:12.18.4
+FROM node:14.13.1
 
 ENV LANG C.UTF-8
 ENV TZ Asia/Ho_Chi_Minh
