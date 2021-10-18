@@ -30,12 +30,14 @@
         <div class="mt-2 indicator-item badge badge-primary">
           {{ cartCount }}
         </div> 
-        <button class="btn btn-square btn-ghost" @click="$router.push('/gio-hang')">
-          <lottie
-            :options="defaultOptions"
-            v-on:animCreated="handleAnimation"
-          />
-        </button> 
+        <client-only>
+          <button class="btn btn-square btn-ghost" @click="$router.push('/gio-hang')">
+            <lottie
+              :options="defaultOptions"
+              v-on:animCreated="handleAnimation"
+            />
+          </button> 
+        </client-only>
       </div>
     </div>
   </div>

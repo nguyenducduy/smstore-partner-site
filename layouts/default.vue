@@ -8,7 +8,6 @@
       </main>
       <menu-right />
     </div>
-    <notifications/>
   </div>
 </template>
 

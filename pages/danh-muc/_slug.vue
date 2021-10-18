@@ -1,15 +1,16 @@
 <template>
   <div v-lazy-container="{ selector: 'img' }" v-if="products">
-    <loading v-show="loading" />
-    
     <div class="grid grid-cols-2 gap-2 md:gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 md:grid-cols-4">
       <product-item v-for="(product, i) in products" :key="i" :product="product" />
     </div>
 
-    <infinite-loading spinner="spiral" @infinite="loadMore" v-show="products.length > 0">
-      <span slot="no-more"></span>
-      <span slot="no-results"></span>
-    </infinite-loading>
+    <client-only>
+      <infinite-loading spinner="spiral" @infinite="loadMore" v-show="products.length > 0">
+        <span slot="no-more"></span>
+        <span slot="no-results"></span>
+      </infinite-loading>
+    </client-only>
+    
   </div>
 </template>
 
@@ -39,16 +40,13 @@ export default class HomePage extends Vue {
     });
   }
 
-  async created() {    
-    this.loading = true
+  async mounted() {    
     this.resetProducts()
     
     await this.loadProducts({
       infiniteState: null,
       slug: this.$route.params.slug
     })
-
-    this.loading = false
   }
 }
 </script>

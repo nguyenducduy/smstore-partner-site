@@ -29,8 +29,6 @@ export const mutations = {
 export const actions = {
   async loadProducts({ state, commit, rootState }, payload) {
     try {
-      console.log(rootState.shop);
-      
       const r = await this.app.apolloProvider.defaultClient.query({
         query: fetchProducts,
         variables: {

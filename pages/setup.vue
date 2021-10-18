@@ -45,19 +45,21 @@ export default class SettingUpPage extends Vue {
 
     const host = window.location.host;
     const parts = host.split('.');
+    let shopVariables = {
+      is_activated: { _eq: true },
+      is_blocked: { _eq: false }
+    }
 
     //check if subdomain of tct domain
     if (parts.length === 3) {
       this.domain = parts[0]
-      // Vue.ls.set('domain', parts[0]);
-      // this.$cookiz.set('domain', parts[0]);
+      shopVariables['name'] = { _eq: this.domain}
     }
 
     // check if custom domain
     if (parts.length === 2) {
       this.domain = host
-      // Vue.ls.set('domain', host);
-      // this.$cookiz.set('domain', host);
+      shopVariables['domain'] = { _eq: this.domain}
     }
 
     console.log(this.domain);
@@ -66,11 +68,7 @@ export default class SettingUpPage extends Vue {
     const r = await this.$apollo.query({
       query: fetchStore,
       variables: {
-        where: {
-          domain: { _eq: this.domain },
-          is_activated: { _eq: true },
-          is_blocked: { _eq: false }
-        }
+        where: shopVariables
       }
     });
     

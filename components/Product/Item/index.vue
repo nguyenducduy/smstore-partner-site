@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col justify-center p-2 bg-white rounded-lg shadow-lg md:p-4 card hover:shadow-2xl" v-lazy-container="{ selector: 'img' }" >
-    <div class="prod-title">
+  <div class="flex flex-col justify-center bg-white rounded-lg shadow-md card hover:shadow-xl" v-lazy-container="{ selector: 'img' }" >
+    <div class="px-2 prod-title md:px-4">
       <p class="text-sm text-gray-700 hover:text-blue-900 md:text-base">
         <nuxt-link :to="`/danh-muc/${product.category.slug}`">
           {{ product.category.name }}
@@ -16,11 +16,11 @@
       <nuxt-link :to="`/san-pham/${product.slug}`" v-if="product.images.length > 0">
         <img
           :data-src="$helper.getImage(product.images[0].path)"
-          class="object-cover object-center w-full rounded-md"
+          class="object-cover object-center w-full"
         />
       </nuxt-link>
     </div>
-    <div class="grid gap-10 prod-info">
+    <div class="grid gap-10 px-2 prod-info md:px-4">
       <div class="flex flex-col items-center justify-between text-gray-900 md:flex-row">
         <p class="font-mono font-bold ">
           {{ product.price | number('0,0') }} &#8363;
