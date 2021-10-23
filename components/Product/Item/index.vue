@@ -1,17 +1,6 @@
 <template>
-  <div class="flex flex-col justify-center bg-white rounded-lg shadow-md card hover:shadow-xl" v-lazy-container="{ selector: 'img' }" >
-    <div class="px-2 prod-title md:px-4">
-      <p class="text-sm text-gray-700 hover:text-blue-900 md:text-base">
-        <nuxt-link :to="`/danh-muc/${product.category.slug}`">
-          {{ product.category.name }}
-        </nuxt-link>
-      </p>
-      <p class="text-sm text-gray-400 uppercase hover:text-blue-400">
-        <nuxt-link :to="`/san-pham/${product.slug}`">
-          {{ product.name }}
-        </nuxt-link>
-      </p>
-    </div>
+  <div class="flex flex-col justify-center bg-white rounded-md card hover:shadow-md" v-lazy-container="{ selector: 'img' }" >
+    
     <div class="py-2 prod-img">
       <nuxt-link :to="`/san-pham/${product.slug}`" v-if="product.images.length > 0">
         <img
@@ -20,7 +9,19 @@
         />
       </nuxt-link>
     </div>
-    <div class="grid gap-10 px-2 prod-info md:px-4">
+    <div class="px-2 pt-2 prod-title md:px-4">
+      <p class="text-sm text-gray-700 hover:text-blue-900 md:text-sm">
+        <nuxt-link :to="`/danh-muc/${product.category.slug}`">
+          {{ product.category.name }}
+        </nuxt-link>
+      </p>
+      <p class="text-sm text-gray-400 hover:text-blue-400 line-clamp-2">
+        <nuxt-link :to="`/san-pham/${product.slug}`">
+          {{ product.name }}
+        </nuxt-link>
+      </p>
+    </div>
+    <div class="grid gap-10 px-2 pb-2 prod-info md:px-4">
       <div class="flex flex-col items-center justify-between text-gray-900 md:flex-row">
         <p class="font-mono font-bold ">
           {{ product.price | number('0,0') }} &#8363;

@@ -5243,10 +5243,10 @@ cyclist@^1.0.1:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
-daisyui@^1.14.1:
-  version "1.14.1"
-  resolved "https://registry.yarnpkg.com/daisyui/-/daisyui-1.14.1.tgz#8f67bf72034e2c4f56a170c072ca23810ecb3d52"
-  integrity sha512-Ou+rAJAcDByUDIcHfBWCv6o9dBUVAyZBJUIoBXR/c+o7kZIkGcR15JPIw6LJmyojhJP594xnuXNIe0I+fcQ+3A==
+daisyui@^1.14.7:
+  version "1.14.7"
+  resolved "https://registry.yarnpkg.com/daisyui/-/daisyui-1.14.7.tgz#a8492204713df45b032490fc2495548d0655c94b"
+  integrity sha512-ojZfuYUmY324lnAQou6JBMj1fXGKMZ/uxUWJaLClSCSXZ3r5nRleeEYPGBoXdjr71tVTZWZpHI8mny4qZzvOow==
 
 dataloader@2.0.0:
   version "2.0.0"

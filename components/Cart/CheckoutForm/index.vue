@@ -13,7 +13,7 @@
                   <label>{{ message }}</label>
                 </div>
               </div>
-              <div class="mb-6 ">
+              <div class="mb-2 ">
                 <label class="block font-light">Tên khách hàng</label>
                 <ValidationProvider rules="required" name="Tên khách hàng" v-slot="{ errors }">
                   <input
@@ -24,7 +24,7 @@
                   <span class="mt-2 text-sm text-red-400">{{ errors[0] }}</span>
                 </ValidationProvider>
               </div>
-              <div class="mb-6 ">
+              <div class="mb-2 ">
                 <label class="block font-light">Email</label>
                 <ValidationProvider rules="required|email" name="Email" v-slot="{ errors }">
                   <input
@@ -35,7 +35,7 @@
                   <span class="mt-2 text-sm text-red-400">{{ errors[0] }}</span>
                 </ValidationProvider>
               </div>
-              <div class="mb-6">
+              <div class="mb-2">
                 <label class="block font-light">Số điện thoại liên lạc</label>
                 <ValidationProvider rules="required" name="Số điện thoại liên lạc" v-slot="{ errors }">
                   <input
@@ -46,7 +46,7 @@
                   <span class="mt-2 text-sm text-red-400">{{ errors[0] }}</span>
                 </ValidationProvider>
               </div>
-              <div class="mb-6">
+              <div class="mb-2">
                 <label class="block font-light">Địa chỉ nhận hàng</label>
                 <ValidationProvider rules="required" name="Địa chỉ nhận hàng" v-slot="{ errors }">
                   <input
@@ -57,7 +57,7 @@
                   <span class="mt-2 text-sm text-red-400">{{ errors[0] }}</span>
                 </ValidationProvider>
               </div>
-              <div class="mb-6">
+              <div class="mb-2">
                 <label class="block font-light">Ghi chú</label>
                 <ValidationProvider name="Ghi chú" v-slot="{ errors }">
                   <textarea
