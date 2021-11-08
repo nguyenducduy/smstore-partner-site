@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="mb-4 rounded-md md:mb-8" v-show="!loading && banners.length > 0">
+    <div class="mb-4 rounded-sm md:mb-8" v-show="!loading && banners.length > 0">
       <banners :slides="banners" />
     </div>
     <div

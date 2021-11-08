@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col justify-center bg-white rounded-md card hover:shadow-md" v-lazy-container="{ selector: 'img' }" >
+  <div class="flex flex-col justify-center bg-white card hover:shadow-md" v-lazy-container="{ selector: 'img' }" >
     
-    <div class="py-2 prod-img">
+    <div class="pb-2 prod-img">
       <nuxt-link :to="`/san-pham/${product.slug}`" v-if="product.images.length > 0">
         <img
           :data-src="$helper.getImage(product.images[0].path)"
@@ -9,7 +9,7 @@
         />
       </nuxt-link>
     </div>
-    <div class="px-2 pt-2 prod-title md:px-4">
+    <div class="px-4 pt-2 prod-title md:px-4">
       <p class="text-sm text-gray-700 hover:text-blue-900 md:text-sm">
         <nuxt-link :to="`/danh-muc/${product.category.slug}`">
           {{ product.category.name }}
@@ -21,8 +21,8 @@
         </nuxt-link>
       </p>
     </div>
-    <div class="grid gap-10 px-2 pb-2 prod-info md:px-4">
-      <div class="flex flex-col items-center justify-between text-gray-900 md:flex-row">
+    <div class="grid gap-10 px-4 py-4 prod-info md:px-4">
+      <div class="flex flex-col justify-between text-gray-900 md:flex-row">
         <p class="font-mono font-bold ">
           {{ product.price | number('0,0') }} &#8363;
           <br/>
@@ -30,8 +30,8 @@
             {{ product.order_confirmed }} đã bán
           </small>
         </p>
-        <product-add-to-wish-button :product="product" v-if="product.is_wished === false" />
-        <product-remove-from-wish-button :product="product" v-else />
+        <!-- <product-add-to-wish-button :product="product" v-if="product.is_wished === false" />
+        <product-remove-from-wish-button :product="product" v-else /> -->
       </div>
     </div>
   </div>

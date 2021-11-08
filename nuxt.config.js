@@ -57,6 +57,7 @@ export default {
     { src: '@/plugins/vue-lottie.js', mode: 'client' },
     { src: '@/plugins/vue-infinite.js', mode: 'client' },
     { src: '@/plugins/vue-gtag.js', mode: 'client' },
+    { src: '@/plugins/buetify.js' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

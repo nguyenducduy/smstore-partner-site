@@ -1,66 +1,92 @@
 <template>
-  <div class="sticky top-0 z-50 mb-2 bg-white shadow-sm navbar">
-    <div class="flex-none lg:flex xl:hidden">
-      <menu-collapse />
-    </div> 
-    <div class="mx-2 navbar-start">
-      <nuxt-link to="/" class="lg:block sm:block" >
-        <img :src="$helper.getImage(currentShopLogo)" class="w-10 sm:mx-4">
-      </nuxt-link>
-      <category-menu-dropdown class="hidden lg:block md:block sm:block" />
-    </div> 
-    <div class="flex justify-center px-2 mx-2 navbar-center lg:flex md:w-1/2 sm:flex xl:flex">
-      <div class="w-full md:w-9/12 form-control">
-        <input type="text" placeholder="Tìm kiếm" class="bg-gray-100 input search-bar" v-model="q" @keyup.enter="goSearch()">
-      </div>
-    </div> 
-    <div class="navbar-end">
-      <div class="hidden mr-4 xl:mx-4 md:mx-4 indicator">
-        <div class="mt-2 indicator-item badge badge-secondary">
-          {{ wishCount }}
-        </div> 
-        <button class="btn btn-square btn-ghost" @click="$router.push('/wish')">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fd0061" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-            <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
-          </svg>
-        </button> 
-      </div>
-      <div class="mr-4 xl:mx-8 md:mx-4 indicator">
-        <div class="mt-2 indicator-item badge badge-primary">
-          {{ cartCount }}
-        </div> 
-        <client-only>
-          <button class="btn btn-square btn-ghost" @click="$router.push('/gio-hang')">
+  <b-navbar>
+    <template #brand>
+      <b-navbar-item tag="router-link" :to="{ path: '/' }">
+        <img :src="$helper.getImage(currentShopLogo)" class="sm:mx-4">
+      </b-navbar-item>
+    </template>
+
+    <template #start>
+      <template v-for="cate in categories">
+        <b-navbar-dropdown  hoverable :label="cate.name" v-if="cate.children.length > 0" :key="cate.slug">
+          <template v-for="child1 in cate.children">
+            <b-navbar-dropdown :label="child1.name"  v-if="child1.children.length > 0" :key="child1.slug">
+              <!-- dont show -->
+            </b-navbar-dropdown>
+            <b-navbar-item v-else :key="child1.slug" :href="`/danh-muc/${child1.slug}`">
+              {{ child1.name }}
+            </b-navbar-item>
+          </template>
+        </b-navbar-dropdown>
+        <b-navbar-item v-else :key="cate.slug" :href="`/danh-muc/${cate.slug}`">
+          {{ cate.name }}
+        </b-navbar-item>
+      </template>
+
+      <!-- <b-navbar-item href="#">
+          Documentation
+      </b-navbar-item>
+
+      <b-navbar-dropdown label="Info">
+        <b-navbar-item href="#">
+            About
+        </b-navbar-item>
+        <b-navbar-item href="#">
+            Contact
+        </b-navbar-item>
+      </b-navbar-dropdown>
+
+      <b-navbar-dropdown label="Info">
+        <b-navbar-item href="#">
+            About
+        </b-navbar-item>
+        <b-navbar-item href="#">
+            Contact
+        </b-navbar-item>
+      </b-navbar-dropdown> -->
+    </template>
+
+    <template #end>
+      <b-navbar-item tag="div">
+        <b-input placeholder="Tìm kiếm ..."
+            type="search"
+            icon="magnify"
+            icon-clickable>
+        </b-input>
+        &nbsp;
+        <div class="buttons">
+          <a class="button is-light" @click="$router.push('/gio-hang')">
+            {{ cartCount }}
+
             <lottie
               :options="defaultOptions"
               v-on:animCreated="handleAnimation"
             />
-          </button> 
-        </client-only>
-      </div>
-    </div>
-  </div>
+          </a>
+        </div>
+      </b-navbar-item>
+    </template>
+  </b-navbar>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
 import { Getter } from 'vuex-class'
-import CategoryMenuDropdown from '@/components/Category/MenuDropdown/index.vue'
-import MenuCollapse from '@/components/Layout/MenuCollapse/index.vue'
 import * as animationData from "@/assets/cart.json";
+
+import fetchCategories from '@/gql/queries/fetchCategories.gql'
 
 @Component({
   components: {
-    CategoryMenuDropdown,
-    MenuCollapse,
   }
 })
 export default class TopBar extends Vue {
   @Getter('cart/cartCount') cartCount
   @Getter('wish/wishCount') wishCount
   @Getter('currentShopLogo') currentShopLogo
+  @Getter('currentShopId') currentShopId
 
+  categories: any = null;
   q: string = ''
 
   defaultOptions = {
@@ -80,7 +106,7 @@ export default class TopBar extends Vue {
     this.$router.push('/tim-kiem/' + this.q)
   }
 
-  mounted() {
+  async mounted() {
     this.$bus.$on('searchbar.addkeyword', q => {
       this.q = q
     })
@@ -90,6 +116,13 @@ export default class TopBar extends Vue {
       await this.$helper.sleep(1800)
       this.anim.stop()
     })
+
+    const r = await this.$apollo.query({
+      query: fetchCategories,
+      variables: { store_id: this.currentShopId },
+    })
+
+    this.categories = r.data.categories
   }
 }
 </script>

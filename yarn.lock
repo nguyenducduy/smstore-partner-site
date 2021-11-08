@@ -4008,6 +4008,13 @@ bser@2.1.1:
   dependencies:
     node-int64 "^0.4.0"
 
+buefy@^0.9.11:
+  version "0.9.11"
+  resolved "https://registry.yarnpkg.com/buefy/-/buefy-0.9.11.tgz#69ab7f46e4f172d43247916f770f29764f9e0931"
+  integrity sha512-WP32SiaM9WVxDtzgdiq7V2zyIvn41NboPgluVqdB6OAi1/QhjO/63m6hd/jy6Vk8r+zuhIZD+aP9KlQ10EhxTQ==
+  dependencies:
+    bulma "0.9.3"
+
 buffer-from@^1.0.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.2.tgz#2b146a6fd72e80b4f55d255f35ed59a3a9a41bd5"
@@ -4044,6 +4051,11 @@ builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
   integrity sha1-hZgoeOIbmOHGZCXgPQF0eI9Wnug=
+
+bulma@0.9.3:
+  version "0.9.3"
+  resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.9.3.tgz#ddccb7436ebe3e21bf47afe01d3c43a296b70243"
+  integrity sha512-0d7GNW1PY4ud8TWxdNcP6Cc8Bu7MxcntD/RRLGWuiw/s0a9P+XlH/6QoOIrmbj6o8WWJzJYhytiu9nFjTszk1g==
 
 busboy@^0.3.1:
   version "0.3.1"
@@ -5242,11 +5254,6 @@ cyclist@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
-
-daisyui@^1.14.7:
-  version "1.14.7"
-  resolved "https://registry.yarnpkg.com/daisyui/-/daisyui-1.14.7.tgz#a8492204713df45b032490fc2495548d0655c94b"
-  integrity sha512-ojZfuYUmY324lnAQou6JBMj1fXGKMZ/uxUWJaLClSCSXZ3r5nRleeEYPGBoXdjr71tVTZWZpHI8mny4qZzvOow==
 
 dataloader@2.0.0:
   version "2.0.0"
