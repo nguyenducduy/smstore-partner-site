@@ -36,6 +36,8 @@ export default class DefaultLayout extends Vue {
 </script>
 
 <style lang="scss">
+@import '@/assets/global.scss';
+
 @media (min-width: 320px) and (max-width: 767px) {
   .w-fixed {
     display: none;

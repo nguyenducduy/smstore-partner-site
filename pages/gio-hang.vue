@@ -45,9 +45,9 @@
                   </div>
                 </div> 
                 <div>
-                  <div class="text-sm text-gray-700 uppercase hover:text-blue-400 md:text-lg">
-                    <nuxt-link :to="`/san-pham/${product.slug}`" class="break-words">{{ product.name }}</nuxt-link>
-                  </div> 
+                  
+                    <nuxt-link :to="`/san-pham/${product.slug}`" class="text-sm text-gray-700 break-words hover:text-blue-400 md:text-base">{{ product.name }}</nuxt-link>
+                 
                   <div class="text-sm text-gray-600">
                     <div v-if="product.options.length > 0">
                       <p v-for="(option, i) in product.options" :key="i">

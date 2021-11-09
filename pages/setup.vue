@@ -36,7 +36,7 @@ export default class SettingUpPage extends Vue {
   redirectUrl: string = ''
   domain: string = ''
   
-  msg: string = 'Waiting for first visit time ...'
+  msg: string = 'Đang tải ...'
   notFoundShop: boolean = false
 
   async mounted() {

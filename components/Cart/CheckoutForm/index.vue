@@ -80,7 +80,7 @@
                 {{ sumPrice | number('0,0') }} &#8363;
               </div>
             </div>
-            <button :class="`w-full my-2 btn btn-outline btn-primary ${loading ? 'loading' : '' }`">
+            <button :class="`w-full my-2 button ${loading ? 'loading' : '' }`">
               Đặt hàng
             </button> 
           </div>

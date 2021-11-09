@@ -8,9 +8,9 @@
 
     <template #start>
       <template v-for="cate in categories">
-        <b-navbar-dropdown  hoverable :label="cate.name" v-if="cate.children.length > 0" :key="cate.slug">
+        <b-navbar-dropdown collapsible :label="cate.name" v-if="cate.children.length > 0" :key="cate.slug">
           <template v-for="child1 in cate.children">
-            <b-navbar-dropdown :label="child1.name"  v-if="child1.children.length > 0" :key="child1.slug">
+            <b-navbar-dropdown collapsible :label="child1.name"  v-if="child1.children.length > 0" :key="child1.slug">
               <!-- dont show -->
             </b-navbar-dropdown>
             <b-navbar-item v-else :key="child1.slug" :href="`/danh-muc/${child1.slug}`">
